@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css">
+        <title>Form validation 2.2</title>
+    </head>
+    <body>
+        <div class="main">
+            <form action="" method="POST" class="form" id="register-form">
+                <h3 class="heading">Sign in</h3>
+                <p class="desc">
+                    Welcome back !
+                </p>
+
+                <div class="spacer"></div>
+
+                <!-- Full name -->
+                <div class="form-group">
+                    <label for="fullname" class="form-label">Full name</label>
+                    <input
+                        id="fullname"
+                        name="fullname"
+                        rules="required"
+                        type="text"
+                        placeholder="John"
+                        class="form-control"
+                    />
+                    <span class="form-message"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                        id="email"
+                        name="email"
+                        rules="required|email"
+                        type="text"
+                        placeholder="email@domain.com"
+                        class="form-control"
+                    />
+                    <span class="form-message"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                        id="password"
+                        name="password"
+                        rules="required|min:6"
+                        type="password"
+                        placeholder="*******"
+                        class="form-control"
+                    />
+                    <span class="form-message"></span>
+                </div>
+
+
+                <button class="form-submit">Sign up</button>
+            </form>
+        </div>
+
+        <script src="validator.js"></script>
+
+        <script>
+            //output
+            //Way 1 with new Validator
+            //new: object constructor => Validator is function constructor => returns an object initialized from these functions
+            var form = new Validator('#register-form');
+            form.onSubmit = function(formData) {
+                console.log(formData);
+            }
+
+
+            //Way 2 with Validator('#register-form', options)
+            //second argument is "options"
+            // Validator('#register-form', {
+            //     onSubmit: function (data) {
+            //         console.log(data);
+            //     }
+            // })
+              
+         </script>
+    </body>
+</html>
